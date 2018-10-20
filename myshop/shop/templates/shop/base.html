@@ -13,7 +13,7 @@
   <div id="subheader">
   <ul id="ul li">
       <li {% if not category %}class="selected"{% endif %}>
-        <a href="{% url "shop:product_list" %}">All</a>
+        <a href="{% url "shop:product_list" %}">Home</a>
       </li>
       {% for c in categories %}
         <li {% if category.slug == c.slug %}class="selected"{% endif %}>

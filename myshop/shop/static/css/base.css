@@ -147,9 +147,9 @@ ul.errorlist {
 }
 #header .logo {
     font-family: 'Ubuntu', sans-serif;
-    float:left;
+    padding-left: 10px;
     color:#333;
-    font-size:22px;
+    font-size:32px;
     margin-right:10%;
 }
 

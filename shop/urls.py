@@ -11,7 +11,7 @@ app_name = 'shop'
 urlpatterns = [
     #url(r'^logout/$', logout, name='logout'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('login/', views.user_login, name='login'),
     url(r'^register/$', views.register, name='register'),
     #url(r'^register_done/$', views., name='register'),
     # change password urls

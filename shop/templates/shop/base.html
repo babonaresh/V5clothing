@@ -37,7 +37,7 @@
                             <li><a href="{% url 'shop:password_change' %}"><i class="fa fa-btn fa-sign-out"></i>Change Password</a></li>
                     </li>
                 {% else %}
-                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="{% url 'shop:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li><a href="{% url 'shop:register' %}"><i class="glyphicon glyphicon-log-in"></i>SignUp</a></li>
                 {% endif %}
          {% endwith %} </ul>
@@ -51,7 +51,7 @@
           <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
         </li2>
       {% endfor %}
-   <li2 ><a href="{% url "shop:about" %}">About Us</a></li2>
+   <li2 ><a {% if active %}class="selected"{% endif %} href="{% url "shop:about" %}">About Us</a></li2>
                <li2><a href="{% url "shop:contact" %}">Contact Us</a></li2>
                 <li2><a href="{% url "shop:product_list" %}">Special Deals</a></li2>
       </li2>

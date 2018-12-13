@@ -12,6 +12,7 @@ from django.db.models import Q
 
 
 def register(request):
+    categories = Category.objects.all()
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
@@ -25,7 +26,7 @@ def register(request):
             return render(request, 'shop/register_done.html', {'new_user': new_user})
     else:
       user_form = UserRegistrationForm()
-      return render(request, 'shop/register.html', {'user_form': user_form})
+      return render(request, 'shop/register.html', {'categories': categories,'user_form': user_form})
 
 
 def product_list(request, category_slug=None):
@@ -49,6 +50,7 @@ def product_list(request, category_slug=None):
 
 
 def product_detail(request, id, slug):
+    categories = Category.objects.all()
     product = get_object_or_404(Product,
                                 id=id,
                                 slug=slug,
@@ -80,9 +82,10 @@ def product_detail(request, id, slug):
                        'comments': comments,
                        'new_comment': new_comment,
                        'comment_form': comment_form,
-                       'cart_product_form': cart_product_form})
+                       'cart_product_form': cart_product_form,'categories': categories})
 
 def user_login(request):
+    categories = Category.objects.all()
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -101,12 +104,14 @@ def user_login(request):
                 return HttpResponse('Invalid login')
     else:
         form = LoginForm()
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'registration/login.html', {'form': form,'categories': categories})
 
 
-def about(request):
- return render(request,'shop/about.html',{})
+def about(request,category_slug=None):
+ categories = Category.objects.all()
+ return render(request,'shop/about.html',{'categories': categories})
 
 
 def contact(request):
- return render(request,'shop/contact.html',{})
+    categories = Category.objects.all()
+    return render(request,'shop/contact.html',{'categories': categories})
